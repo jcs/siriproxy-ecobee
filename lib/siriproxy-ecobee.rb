@@ -46,6 +46,16 @@ class SiriProxy::Plugin::Ecobee
 
     tstat_info = @thermostat.tstat_info
 
+    if !tstat_info[:hold_temp]
+      if sys == "heat"
+        tstat_info[:hvac_mode] = "heat"
+        tstat_info[:hold_temp] = tstat_info[:heat_hold_temp]
+      else
+        tstat_info[:hvac_mode] = "cool"
+        tstat_info[:hold_temp] = tstat_info[:cool_hold_temp]
+      end
+    end
+
     new_temp = tstat_info[:hold_temp].to_i + (dir == "up" ? 1 : -1)
 
     # sanity
