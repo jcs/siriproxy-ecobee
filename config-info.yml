@@ -1,0 +1,7 @@
+# these are just examples, your attributes should go in the main
+# SiriProxy/config.yml file
+
+    - name: "Ecobee"
+      git: "git://github.com/jcs/siriproxy-ecobee.git"
+      ecobee_username: "user@example.com"
+      ecobee_password: "your_password_here"
