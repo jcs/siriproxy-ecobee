@@ -42,7 +42,7 @@ class SiriProxy::Plugin::Ecobee
   # turn the heat up or down (by one degree)
   listen_for /turn the (heat|air( conditioning)?) (up|down)/i do
     sys = match_data[1]
-    dir = match_data[4]
+    dir = match_data[3]
 
     tstat_info = @thermostat.tstat_info
 
