@@ -118,7 +118,7 @@ class SiriProxy::Plugin::Ecobee
   listen_for /what( i|')s the temperature( in (here|the (apartment|house|room)))?/i do
     tstat_info = @thermostat.tstat_info
 
-    str = "It is #{tstat_info[:room_temp].ceil} degrees#{match_data[2]}. " +
+    str = "It is #{tstat_info[:room_temp].floor} degrees#{match_data[2]}. " +
       case tstat_info[:hvac_mode]
       when "heat"
         "The thermostat is holding the heat at " +
