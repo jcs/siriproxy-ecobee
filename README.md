@@ -4,7 +4,7 @@ by [joshua stein](http://jcs.org/)
 
 This is a [SiriProxy](https://github.com/plamoni/SiriProxy) plugin for controlling an [Ecobee](http://www.ecobee.com/) Internet-connected thermostat. 
 
-Copy the lines from `config-info.yml` to your `SiriProxy/config.yml` file, setting the `ecobee_username` and `ecobee_password` parameters to the proper settings you use for ecobee.com.
+Copy the lines from `config-info.yml` to your `~/.siriproxy/config.yml` file, setting the `ecobee_username` and `ecobee_password` parameters to the proper settings you use for ecobee.com.
 
 Commands currently supported ("heat", "air", and "air conditioning" can all be used for a system name):
 
