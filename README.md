@@ -22,7 +22,7 @@ Commands currently supported ("heat", "air", and "air conditioning" can all be u
 
 4. "Turn the heat on" or "Turn the air on"
 
-    *Turns that system on and reports back its pre-programmed hold temperature. *
+    *Turns that system on and reports back its pre-programmed hold temperature.*
 
 5. "What's the temperature in here" or "What is the temperature in the house" (or "apartment" or "room")
 
