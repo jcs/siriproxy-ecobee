@@ -2,7 +2,7 @@
 
 by [joshua stein](http://jcs.org/)
 
-This is a [SiriProxy](https://github.com/plamoni/SiriProxy) plugin for controlling an [Ecobee](http://www.ecobee.com/) Internet-connected thermostat. 
+This is a [SiriProxy](https://github.com/plamoni/SiriProxy) plugin for controlling an [Ecobee](http://www.ecobee.com/) Internet-connected thermostat.  A video demonstration can be viewed [here](http://www.flickr.com/photos/symmetricalism/6433367985/).
 
 Copy the lines from `config-info.yml` to your `~/.siriproxy/config.yml` file, setting the `ecobee_username` and `ecobee_password` parameters to the proper settings you use for ecobee.com.
 
