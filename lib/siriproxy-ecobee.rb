@@ -93,12 +93,20 @@ class SiriProxy::Plugin::Ecobee
     request_completed
   end
   listen_for /#{CONFIRM_REGEX}/i, :within_state => :turn_sys_off do
+    set_state nil
     tstat_info = @thermostat.tstat_info
 
     @thermostat.turn_hvac_off!
 
     say "Okay, the " + (tstat_info[:hvac_mode] == "heat" ? "heat" :
       "air conditioning") + " has been turned off."
+
+    request_completed
+  end
+  listen_for /#{DENY_REGEX}/i, :within_state => :turn_sys_off do
+    set_state nil
+
+    say "Okay."
 
     request_completed
   end
@@ -118,7 +126,7 @@ class SiriProxy::Plugin::Ecobee
   listen_for /what( i|')s the temperature( in (here|the (apartment|house|room)))?/i do
     tstat_info = @thermostat.tstat_info
 
-    str = "It is #{tstat_info[:room_temp].floor} degrees#{match_data[2]}. " +
+    str = "It is #{tstat_info[:room_temp]} degrees#{match_data[2]}. " +
       case tstat_info[:hvac_mode]
       when "heat"
         "The thermostat is holding the heat at " +
