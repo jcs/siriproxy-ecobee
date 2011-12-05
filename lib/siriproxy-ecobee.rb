@@ -97,26 +97,16 @@ class SiriProxy::Plugin::Ecobee
 
   # turn the heat off - require confirmation on this, getting it wrong can suck
   listen_for /turn the (heat|air( conditioning)?) off/i do
-    say "Are you sure you want to turn the #{match_data[1]} off?"
-    set_state :turn_sys_off
+    if confirm "Are you sure you want to turn the #{match_data[1]} off?"
+      tstat_info = @thermostat.tstat_info
 
-    request_completed
-  end
-  listen_for /#{CONFIRM_REGEX}/i, :within_state => :turn_sys_off do
-    set_state nil
-    tstat_info = @thermostat.tstat_info
+      @thermostat.turn_hvac_off!
 
-    @thermostat.turn_hvac_off!
-
-    say "Okay, the " + (tstat_info[:hvac_mode] == "heat" ? "heat" :
-      "air conditioning") + " has been turned off."
-
-    request_completed
-  end
-  listen_for /#{DENY_REGEX}/i, :within_state => :turn_sys_off do
-    set_state nil
-
-    say "Okay."
+      say "Okay, the " + (tstat_info[:hvac_mode] == "heat" ? "heat" :
+        "air conditioning") + " has been turned off."
+    else                                                                        
+      say "Okay."
+    end                                                                         
 
     request_completed
   end
